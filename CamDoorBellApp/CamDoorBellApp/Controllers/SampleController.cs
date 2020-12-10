@@ -11,18 +11,18 @@ using System.Web.Http;
 
 namespace CamDoorBellApp.Controllers
 {
-    public class AudioLibsController : ApiController
+    public class SampleController : ApiController
     {
         public HttpResponseMessage Get()
         {
             string query = @"
-                    select Id,Name, Count, Size, PlayModeId from
-                    dbo.AudioLibs
+                    select SampleId, SampleName, SampleSize, SampleLink, PlaylistId from
+                    dbo.Samples
                     ";
             DataTable table = new DataTable();
-            using(var con = new SqlConnection(ConfigurationManager.
-                ConnectionStrings["ddDoorBell"].ConnectionString))
-                using (var cmd = new SqlCommand(query, con))
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
             using (var da = new SqlDataAdapter(cmd))
             {
                 cmd.CommandType = CommandType.Text;
@@ -31,22 +31,22 @@ namespace CamDoorBellApp.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, table);
         }
 
-        public string Post(AudioLib audioLib)
+        public string Post(Sample sample)
         {
             try
             {
                 string query = @"
-                    insert into dbo.AudioLibs values
-                    ('" + audioLib.Name + @"',
-                     '" + audioLib.Count + @"',
-                     '" + audioLib.Size + @"',
-                     '" + audioLib.PlayModeId + @"'
+                    insert into dbo.Samples values
+                    ('" + sample.SampleName + @"',
+                     '" + sample.SampleSize + @"',
+                     '" + sample.SampleLink + @"',
+                     '" + sample.PlaylistId + @"'
                     )
                     ";
 
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
-                    ConnectionStrings["ddDoorBell"].ConnectionString))
+                    ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
                 using (var cmd = new SqlCommand(query, con))
                 using (var da = new SqlDataAdapter(cmd))
                 {
@@ -57,38 +57,34 @@ namespace CamDoorBellApp.Controllers
             }
             catch (Exception)
             {
-
                 return "Failed to Add!!";
             }
         }
-        public string Put(AudioLib audioLib)
+        public string Put(Sample sample)
         {
             try
             {
                 string query = @"
-                    update dbo.AudioLibs set 
-                    Name='" + audioLib.Name + @"'
-                    ,Count='" + audioLib.Count + @"'
-                    ,Size='" + audioLib.Size + @"'
-                    ,PlayModeId='" + audioLib.PlayModeId + @"'
-                    where Id=" + audioLib.Id + @"
+                    update dbo.Samples set 
+                    SampleName='" + sample.SampleName + @"'
+                    ,SampleSize='" + sample.SampleSize + @"'
+                    ,SampleLink='" + sample.SampleLink + @"'
+                    ,PlaylistId='" + sample.PlaylistId + @"'
+                    where SampleId=" + sample.SampleId + @"
                     ";
-
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
-                    ConnectionStrings["ddDoorBell"].ConnectionString))
+                    ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
                 using (var cmd = new SqlCommand(query, con))
                 using (var da = new SqlDataAdapter(cmd))
                 {
                     cmd.CommandType = CommandType.Text;
                     da.Fill(table);
                 }
-
                 return "Updated Successfully!!";
             }
             catch (Exception)
             {
-
                 return "Failed to Update!!";
             }
         }
@@ -98,47 +94,24 @@ namespace CamDoorBellApp.Controllers
             try
             {
                 string query = @"
-                    delete from dbo.AudioLibs 
-                    where Id=" + id + @"
+                    delete from dbo.Samples 
+                    where SampleId=" + id + @"
                     ";
-
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
-                    ConnectionStrings["ddDoorBell"].ConnectionString))
+                    ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
                 using (var cmd = new SqlCommand(query, con))
                 using (var da = new SqlDataAdapter(cmd))
                 {
                     cmd.CommandType = CommandType.Text;
                     da.Fill(table);
                 }
-
                 return "Deleted Successfully!!";
             }
             catch (Exception)
             {
-
                 return "Failed to Delete!!";
             }
-        }
-
-        [Route("api/AudioLibs/GetAllPlayModes")]
-        [HttpGet]
-        public HttpResponseMessage GetAllPlayModes()
-        {
-            string query = @"
-                    select Name from dbo.PlayModes";
-
-            DataTable table = new DataTable();
-            using (var con = new SqlConnection(ConfigurationManager.
-                ConnectionStrings["ddDoorBell"].ConnectionString))
-            using (var cmd = new SqlCommand(query, con))
-            using (var da = new SqlDataAdapter(cmd))
-            {
-                cmd.CommandType = CommandType.Text;
-                da.Fill(table);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

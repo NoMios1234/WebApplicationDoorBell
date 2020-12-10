@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -21,7 +22,7 @@ namespace CamDoorBellApp.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DoorBellAlarmSystemDB", throwIfV1Schema: false)
         {
         }
         
@@ -29,5 +30,12 @@ namespace CamDoorBellApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Playlist> playlist { get; set; }
+        public DbSet<Sample> samples{ get; set; }
+        public DbSet<WirelessConn> wirelessConn { get; set; }
+        public DbSet<Camera> camera { get; set; }
+
+
     }
 }

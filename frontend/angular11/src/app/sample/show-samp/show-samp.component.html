@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary float-right m-2" 
+<button type="button" class="btn btn-primary float-left m-2" 
 data-toggle="modal" data-target="#exampleModal"
 (click)="addClick()"
 data-backdrop="static" data-keyboard="false">
@@ -32,9 +32,9 @@ data-backdrop="static" data-keyboard="false">
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Size</th>
-            <th>Link</th>
+            <th>Size</th>   
             <th>Playlist Name</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -42,10 +42,9 @@ data-backdrop="static" data-keyboard="false">
             <td>{{dataItem.SampleId}}</td>
             <td>{{dataItem.SampleName}}</td>
             <td>{{dataItem.SampleSize}}</td>
-            <td>{{dataItem.SampleLink}}</td>
             <td>{{dataItem.PlaylistName}}</td>
-            <td>
-                <button type="button" class="btn btn-light mr-1"
+            <td> 
+              <button type="button" class="btn btn-light mr-1"
                 data-toggle="modal" data-target="#exampleModal"
                 (click)="editClick(dataItem)"
                 data-backdrop="static" data-keyboard="false"

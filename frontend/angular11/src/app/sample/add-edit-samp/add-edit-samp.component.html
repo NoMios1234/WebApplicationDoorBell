@@ -1,6 +1,5 @@
-<div class="d-flex flex-row bd-highligh mb-3" >
-    <div class="form-froup row">
-
+<div class="d-flex flex-row bd-highligh mb-1 " >
+    <div class="form-froup row bd-highligh">
         <label class="col-sm-2 col-form-label">Name</label>
         <div class="col-sm-10">
             <label class="form-control" placeholder="Sample Name">{{SampleName}}</label>
@@ -9,22 +8,20 @@
         <div class="col-sm-10">
             <label class="form-control" placeholder="Sample Size">{{SampleSize}}</label>
         </div>
-        
-        <label class="col-sm-2 col-form-label">PlaylistName</label>
+        <label class="col-sm-2 col-form-label">Playlist</label>
         <div class="col-sm-10">
-
             <select class="form-control" [(ngModel)]="PlaylistName">
-                <option value="" selected></option>
+                <option>--Select--</option>
                 <option *ngFor="let dataItem of PlaylistList">
                   {{dataItem.PlaylistName}}
                 </option>
               </select>
-            
         </div>
         <div class="ml-3 bd-highligh">
             <input type="file" (change)="uploadFile($event)" class="mt-2"/>
         </div>
     </div>
+    
 </div>
 
 <button (click)="addSample()" *ngIf="samp.SampleId==0" class="btn btn-primary">

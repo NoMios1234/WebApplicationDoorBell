@@ -73,7 +73,7 @@ export class AddEditSampComponent implements OnInit {
       this.SampleSize = file.size;
       this.SampleLink = this.service.FileUrl+this.SampleName;
     })
-
+    document.getElementsByClassName('UploadF')[0].setAttribute("style", "display: block;") 
   }
 
   updatePlaylistInfo()

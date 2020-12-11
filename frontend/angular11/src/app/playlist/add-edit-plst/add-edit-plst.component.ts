@@ -47,16 +47,4 @@ export class AddEditPlstComponent implements OnInit {
         alert(res.toString());
       })
   }
-  updatePlaylistInfo()
-  {
-    var val = {PlaylistId:this.PlaylistId,
-      PlaylistName:this.PlaylistName,
-      CountOfSamp:this.CountOfSamp,
-      PlaylistSize:this.PlaylistSize
-      };
-    this.service.updatePlaylistInfo(val).subscribe(res=>{
-      alert(res.toString());
-    })
-  }
-
 }

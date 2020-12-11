@@ -38,6 +38,7 @@ export class ShowSampComponent implements OnInit {
     this.samp=item;
     this.ModalTitle="Edit Sample";
     this.ActivateAddEditSampComp=true;
+    this.service.updatePlaylistInfo(item).subscribe();
   }
 
   deleteClick(item)
@@ -48,6 +49,7 @@ export class ShowSampComponent implements OnInit {
         alert(data.toString());
         this.refreshSampleList();
       })
+      this.service.updatePlaylistInfo(item).subscribe();
     }
   }
 
@@ -60,8 +62,7 @@ export class ShowSampComponent implements OnInit {
   refreshSampleList()
   {
     this.service.getSampList().subscribe(data=>{
-      this.SampleList=data;
+      this.SampleList=data;     
     });
   }
-
 }

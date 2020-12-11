@@ -56,9 +56,10 @@ export class AddEditSampComponent implements OnInit {
               SampleSize:this.SampleSize,
               SampleLink:this.SampleLink,
               PlaylistName:this.PlaylistName};
-      this.service.updateSample(val).subscribe(res=>{
-        alert(res.toString());
-      })
+    this.service.updateSample(val).subscribe(res=>{
+      alert(res.toString());
+    })
+    this.updatePlaylistInfo();
   }
 
   uploadFile(event)
@@ -82,9 +83,7 @@ export class AddEditSampComponent implements OnInit {
       SampleSize:this.SampleSize,
       SampleLink:this.SampleLink,
       PlaylistName:this.PlaylistName};
-    this.service.updatePlaylistInfo(val).subscribe(res=>{
-      alert(res.toString());
-    })
+      this.service.updatePlaylistInfo(val).subscribe();
   }
   
 }

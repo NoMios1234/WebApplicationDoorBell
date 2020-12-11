@@ -19,7 +19,8 @@ namespace CamDoorBellApp.Controllers
                     UPDATE 
                         dbo.Playlists
                     SET 
-                        dbo.Playlists.CountOfSamp = (Select Count(dbo.Samples.SampleId) from dbo.Samples where dbo.Samples.PlaylistName = '" + sample.PlaylistName + @"')
+                        dbo.Playlists.CountOfSamp = (Select Count(dbo.Samples.SampleId) from dbo.Samples where dbo.Samples.PlaylistName = '" + sample.PlaylistName + @"'),
+                        dbo.Playlists.PlaylistSize = (Select Sum(dbo.Samples.SampleSize) from dbo.Samples where dbo.Samples.PlaylistName = '" + sample.PlaylistName + @"')
                     Where dbo.Playlists.PlaylistName = '" + sample.PlaylistName + @"'
                     ";
             DataTable table = new DataTable();

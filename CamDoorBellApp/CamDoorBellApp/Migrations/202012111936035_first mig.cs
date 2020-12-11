@@ -3,7 +3,7 @@ namespace CamDoorBellApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first_mig : DbMigration
+    public partial class firstmig : DbMigration
     {
         public override void Up()
         {
@@ -37,6 +37,7 @@ namespace CamDoorBellApp.Migrations
                         SampleName = c.String(nullable: false),
                         SampleSize = c.Int(nullable: false),
                         SampleLink = c.String(),
+                        PlaylistName = c.String(),
                         Playlist_PlaylistId = c.Int(),
                     })
                 .PrimaryKey(t => t.SampleId)

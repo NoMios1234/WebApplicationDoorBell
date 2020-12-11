@@ -11,13 +11,16 @@ namespace CamDoorBellApp.Controllers
 {
     public class ViewController : ApiController
     {
-        [Route("api/View/GetPlaylistInfo")]
-        [HttpGet]
-        public HttpResponseMessage GetPlaylistInfo()
+        [Route("api/View/updatePlaylistInfo")]
+        [HttpPut]
+        public HttpResponseMessage updatePlaylistInfo(Sample sample)
         {
             string query = @"
-                    select dbo.Playlists.PlaylistName, dbo.Playlists.CountOfSamp, dbo.Playlists.PlaylistSize,
-                    from   dbo.Playlists
+                    UPDATE 
+                        dbo.Playlists
+                    SET 
+                        dbo.Playlists.CountOfSamp = (Select Count(dbo.Samples.SampleId) from dbo.Samples where dbo.Samples.PlaylistName = '" + sample.PlaylistName + @"')
+                    Where dbo.Playlists.PlaylistName = '" + sample.PlaylistName + @"'
                     ";
             DataTable table = new DataTable();
             using (var con = new SqlConnection(ConfigurationManager.

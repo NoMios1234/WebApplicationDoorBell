@@ -221,9 +221,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012101720035_first_mig.cs" />
-    <Compile Include="Migrations\202012101720035_first_mig.Designer.cs">
-      <DependentUpon>202012101720035_first_mig.cs</DependentUpon>
+    <Compile Include="Migrations\202012111936035_first mig.cs" />
+    <Compile Include="Migrations\202012111936035_first mig.Designer.cs">
+      <DependentUpon>202012111936035_first mig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -293,7 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Photos\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -325,8 +325,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202012101720035_first_mig.resx">
-      <DependentUpon>202012101720035_first_mig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012111936035_first mig.resx">
+      <DependentUpon>202012111936035_first mig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

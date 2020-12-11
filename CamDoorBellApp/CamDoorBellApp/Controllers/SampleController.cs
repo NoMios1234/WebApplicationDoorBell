@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace CamDoorBellApp.Controllers
@@ -16,7 +17,7 @@ namespace CamDoorBellApp.Controllers
         public HttpResponseMessage Get()
         {
             string query = @"
-                    select SampleId, SampleName, SampleSize, SampleLink, PlaylistId from
+                    select SampleId, SampleName, SampleSize, SampleLink, PlaylistName from
                     dbo.Samples
                     ";
             DataTable table = new DataTable();
@@ -40,7 +41,7 @@ namespace CamDoorBellApp.Controllers
                     ('" + sample.SampleName + @"',
                      '" + sample.SampleSize + @"',
                      '" + sample.SampleLink + @"',
-                     '" + sample.PlaylistId + @"'
+                     '" + sample.PlaylistName + @"'
                     )
                     ";
 
@@ -69,7 +70,7 @@ namespace CamDoorBellApp.Controllers
                     SampleName='" + sample.SampleName + @"'
                     ,SampleSize='" + sample.SampleSize + @"'
                     ,SampleLink='" + sample.SampleLink + @"'
-                    ,PlaylistId='" + sample.PlaylistId + @"'
+                    ,PlaylistName='" + sample.PlaylistName + @"'
                     where SampleId=" + sample.SampleId + @"
                     ";
                 DataTable table = new DataTable();
@@ -112,6 +113,45 @@ namespace CamDoorBellApp.Controllers
             {
                 return "Failed to Delete!!";
             }
+        }
+
+        [Route("api/Sample/uploadFile")]
+        public string uploadFile()
+        {
+            try
+            {
+                var httpRequest = HttpContext.Current.Request;
+                var postedFile = httpRequest.Files[0];
+                string filename = postedFile.FileName;
+                var physicalPath = HttpContext.Current.Server.MapPath("~/Files/" + filename);
+
+                postedFile.SaveAs(physicalPath);
+
+                return filename;
+            }
+            catch(Exception)
+            {
+                return "empty file!";
+            }
+
+        }
+
+        [Route("api/Sample/getAllPlaylistNames")]
+        [HttpGet]
+        public HttpResponseMessage getAllPlaylistNames()
+        {
+            string query = @"select dbo.Playlists.PlaylistName from dbo.Playlists";
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

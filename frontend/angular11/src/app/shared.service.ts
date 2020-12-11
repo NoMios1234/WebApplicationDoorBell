@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -8,48 +7,53 @@ import {Observable} from 'rxjs';
 })
 export class SharedService {
 readonly APIUrl="https://localhost:44371/api";
-readonly FileUrl="https://localhost:44371/Photos";
+readonly FileUrl="https://localhost:44371/Files/";
 
   constructor(private http:HttpClient) { }
 
-  getLibList():Observable<any[]>{
-    return this.http.get<any>(this.APIUrl+'/audiolibs');
+  getPlaylist():Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/Playlist');
   }
-  addAudiolib(val:any)
+  addPlaylist(val:any){
+    return this.http.post(this.APIUrl+'/Playlist', val);
+  }
+  updatePlaylist(val:any)
   {
-    return this.http.post(this.APIUrl+'/Audiolibs', val);
+    return this.http.put(this.APIUrl+'/Playlist', val);
   }
-  updateAudiolib(val:any)
+  deletePlaylist(val:any)
   {
-    return this.http.put(this.APIUrl+'/Audiolibs', val);
+    return this.http.delete(this.APIUrl+'/Playlist/'+val);
   }
-  deleteAudiolib(val:any)
-  {
-    return this.http.delete(this.APIUrl+'/Audiolibs/'+val);
-  }
-
   getSampList():Observable<any[]>{
-    return this.http.get<any>(this.APIUrl+'/samples');
+    return this.http.get<any>(this.APIUrl+'/Sample');
   }
   addSample(val:any)
   {
-    return this.http.post(this.APIUrl+'/Samples', val);
+    return this.http.post(this.APIUrl+'/Sample', val);
   }
   updateSample(val:any)
   {
-    return this.http.put(this.APIUrl+'/Samples', val);
+    return this.http.put(this.APIUrl+'/Sample', val);
   }
   deleteSample(val:any)
   {
-    return this.http.delete(this.APIUrl+'/Samples/'+val);
+    return this.http.delete(this.APIUrl+'/Sample/'+val);
   }
-
-  UploadFile(val:any)
+  uploadFile(val:any)
   {
-    return this.http.post(this.APIUrl+'/Samples/SaveFile',val);
+    return this.http.post(this.APIUrl+'/Sample/UploadFile',val);
   }
-  getAllPlayModes():Observable<any[]>
+  getAllSamples():Observable<any[]>
   {
-    return this.http.get<any[]>(this.APIUrl+'Audiolibs/getAllPlayModes');
+    return this.http.get<any[]>(this.APIUrl+'/Playlist/getAllSamples');
+  }
+  updatePlaylistInfo(val:any)
+  {
+    return this.http.put(this.APIUrl+'/View/updatePlaylistInfo', val);
+  }
+  getAllPlaylistNames():Observable<any[]>
+  {
+    return this.http.get<any[]>(this.APIUrl+'/Sample/getAllPlaylistNames');
   }
 }

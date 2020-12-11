@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { from } from 'rxjs';
+import { PlaylistComponent } from './playlist/playlist.component';
 
-import {AudiolibComponent} from './audiolib/audiolib.component';
-import {SampleComponent} from './sample/sample.component';
+import { SampleComponent } from './sample/sample.component';
+import { WirelessconnComponent } from './wirelessconn/wirelessconn.component';
 
 
 const routes: Routes = [
-  {path:'audiolib',component:AudiolibComponent},
-  {path:'sample',component:SampleComponent}
+  {path:'wirelesscon',component:WirelessconnComponent},
+  {path:'sample',component:SampleComponent},
+  {path:'playlist',component:PlaylistComponent}
 ];
 
 @NgModule({

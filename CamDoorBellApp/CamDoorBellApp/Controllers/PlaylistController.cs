@@ -115,9 +115,9 @@ namespace CamDoorBellApp.Controllers
             }
         }
 
-        [Route("api/Playlist/GetAllSamples")]
+        [Route("api/Playlist/getAllSamples")]
         [HttpGet]
-        public HttpResponseMessage GetAllSamples()
+        public HttpResponseMessage getAllSamples()
         {
             string query = @"
                     select dbo.Samples.SampleName, dbo.Samples.SampleSize from dbo.Samples, dbo.Playlists
@@ -135,5 +135,30 @@ namespace CamDoorBellApp.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, table);
         }
+        /// <summary>
+        /// /////////////////////////////
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/Playlist/getId")]
+        [HttpGet]
+        public HttpResponseMessage getId()
+        {
+            string query = @"
+                    select MIN(dbo.Playlists.PlaylistId) from dbo.Playlists";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
+        }
+
+
     }
 }

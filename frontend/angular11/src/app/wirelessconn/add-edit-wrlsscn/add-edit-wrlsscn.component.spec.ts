@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AudiolibComponent } from './audiolib.component';
+import { AddEditWrlsscnComponent } from './add-edit-wrlsscn.component';
 
-describe('AudiolibComponent', () => {
-  let component: AudiolibComponent;
-  let fixture: ComponentFixture<AudiolibComponent>;
+describe('AddEditWrlsscnComponent', () => {
+  let component: AddEditWrlsscnComponent;
+  let fixture: ComponentFixture<AddEditWrlsscnComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AudiolibComponent ]
+      declarations: [ AddEditWrlsscnComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AudiolibComponent);
+    fixture = TestBed.createComponent(AddEditWrlsscnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

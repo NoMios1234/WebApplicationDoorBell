@@ -8,8 +8,8 @@ data-backdrop="static" data-keyboard="false">
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-      <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered modal-x2" role="document">
+      <div class="modal-content" >
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
           <button type="button" class="close" 
@@ -33,15 +33,17 @@ data-backdrop="static" data-keyboard="false">
             <th>Id</th>
             <th>Name</th>
             <th>Size</th>
-            <th>AudioLibId</th>
+            <th>Link</th>
+            <th>Playlist Name</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let dataItem of SampleList">
-            <td>{{dataItem.Id}}</td>
-            <td>{{dataItem.Name}}</td>
-            <td>{{dataItem.Size}}</td>
-            <td>{{dataItem.AudioLibId}}</td>
+            <td>{{dataItem.SampleId}}</td>
+            <td>{{dataItem.SampleName}}</td>
+            <td>{{dataItem.SampleSize}}</td>
+            <td>{{dataItem.SampleLink}}</td>
+            <td>{{dataItem.PlaylistName}}</td>
             <td>
                 <button type="button" class="btn btn-light mr-1"
                 data-toggle="modal" data-target="#exampleModal"

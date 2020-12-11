@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddEditLibComponent } from './add-edit-lib.component';
+import { AddEditPlstComponent } from './add-edit-plst.component';
 
-describe('AddEditLibComponent', () => {
-  let component: AddEditLibComponent;
-  let fixture: ComponentFixture<AddEditLibComponent>;
+describe('AddEditPlstComponent', () => {
+  let component: AddEditPlstComponent;
+  let fixture: ComponentFixture<AddEditPlstComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddEditLibComponent ]
+      declarations: [ AddEditPlstComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddEditLibComponent);
+    fixture = TestBed.createComponent(AddEditPlstComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

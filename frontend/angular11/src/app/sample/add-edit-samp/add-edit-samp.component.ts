@@ -11,38 +11,80 @@ export class AddEditSampComponent implements OnInit {
   constructor(private service:SharedService) { }
   
   @Input() samp:any;
-    Id:string;
-    Name:string;
-    Size:string;
-    AudioLibId:string;
+    SampleId:string;
+    SampleName:string;
+    SampleSize:string;
+    SampleLink:string;
+    PlaylistName:string;
+
+    PlaylistList:any[];
+ 
 
   ngOnInit(): void {
-    this.Id=this.samp.Id;
-    this.Name=this.samp.Name;
-    this.Size=this.samp.Size;
-    this.AudioLibId=this.samp.AudioLibId;
+    this.loadPlaylistList();
+  }
+
+  loadPlaylistList()
+  {
+    this.service.getAllPlaylistNames().subscribe((data:any)=>{
+      this.PlaylistList = data;
+
+      this.SampleId=this.samp.SampleId;
+      this.SampleName=this.samp.SampleName;
+      this.SampleSize=this.samp.SampleSize;
+      this.SampleLink=this.service.FileUrl+this.SampleName;
+      this.PlaylistName=this.samp.PlaylistName;
+    });   
   }
 
   addSample()
   {
-    var val = {Id:this.Id,
-              Name:this.Name,
-              Size:this.Size,
-              AudioLibId:this.AudioLibId};
+    var val = {SampleId:this.SampleId,
+              SampleName:this.SampleName,
+              SampleSize:this.SampleSize,
+              SampleLink:this.SampleLink,
+              PlaylistName:this.PlaylistName};
     this.service.addSample(val).subscribe(res=>{
       alert(res.toString());
     })
+    this.updatePlaylistInfo();
   }
   updateSample()
   {
-    var val = {Id:this.Id,
-              Name:this.Name,
-              Size:this.Size,
-              AudioLibId:this.AudioLibId};
+    var val = {SampleId:this.SampleId,
+              SampleName:this.SampleName,
+              SampleSize:this.SampleSize,
+              SampleLink:this.SampleLink,
+              PlaylistName:this.PlaylistName};
       this.service.updateSample(val).subscribe(res=>{
         alert(res.toString());
       })
   }
 
+  uploadFile(event)
+  {
+    var file = event.target.files[0];
+    const formData:FormData=new FormData();
+    formData.append('uploadFile',file,file.name);
+
+    this.service.uploadFile(formData).subscribe((data:any)=>{
+      this.SampleName = data.toString();
+      this.SampleSize = file.size;
+      this.SampleLink = this.service.FileUrl+this.SampleName;
+    })
+
+  }
+
+  updatePlaylistInfo()
+  {
+    var val = {SampleId:this.SampleId,
+      SampleName:this.SampleName,
+      SampleSize:this.SampleSize,
+      SampleLink:this.SampleLink,
+      PlaylistName:this.PlaylistName};
+    this.service.updatePlaylistInfo(val).subscribe(res=>{
+      alert(res.toString());
+    })
+  }
   
 }

@@ -7,13 +7,13 @@ namespace CamDoorBellApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class first_mig : IMigrationMetadata
+    public sealed partial class firstmig : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(first_mig));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(firstmig));
         
         string IMigrationMetadata.Id
         {
-            get { return "202012101720035_first_mig"; }
+            get { return "202012111936035_first mig"; }
         }
         
         string IMigrationMetadata.Source

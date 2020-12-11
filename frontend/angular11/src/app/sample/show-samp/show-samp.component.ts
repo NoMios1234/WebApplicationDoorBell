@@ -23,19 +23,20 @@ export class ShowSampComponent implements OnInit {
   addClick()
   {
     this.samp={
-      Id:0,
-      Name:"",
-      Size:0,
-      AudioLibId:0
+      SampleId:0,
+      SampleName:"",
+      SampleSize:0,
+      SampleLink:"",
+      PlaylistName:"",
     }
-    this.ModalTitle = "Add AudioLib";
+    this.ModalTitle = "Add Sample";
     this.ActivateAddEditSampComp=true;
   }
 
   editClick(item)
   {
     this.samp=item;
-    this.ModalTitle="Edit AudioLib";
+    this.ModalTitle="Edit Sample";
     this.ActivateAddEditSampComp=true;
   }
 
@@ -43,7 +44,7 @@ export class ShowSampComponent implements OnInit {
   {
     if(confirm('Are you shure?'))
     {
-      this.service.deleteSample(item.Id).subscribe(data=>{
+      this.service.deleteSample(item.SampleId).subscribe(data=>{
         alert(data.toString());
         this.refreshSampleList();
       })

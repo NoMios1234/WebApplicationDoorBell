@@ -1,0 +1,26 @@
+<div class="form-froup row">
+
+    <label class="col-sm-2 col-form-label">Playlist Name</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="PlaylistName"
+        placeholder="Enter Playlist PlaylistName">
+    </div>
+    <label class="col-sm-2 col-form-label" style="visibility: hidden;">CountOfSamp</label>
+    <div class="col-sm-10" style="visibility: hidden;">
+        <input type="text" class="form-control" [(ngModel)]="CountOfSamp"
+        placeholder="Enter Playlist CountOfSamp">
+    </div>
+    <label class="col-sm-2 col-form-label" style="visibility: hidden;">Playlist Size</label>
+    <div class="col-sm-10" style="visibility: hidden;">
+        <input type="text" class="form-control" [(ngModel)]="PlaylistSize"
+        placeholder="Enter Playlist PlaylistSize">
+    </div> 
+</div>
+
+<button (click)="addPlaylist()" *ngIf="plst.PlaylistId==0" class="btn btn-primary" >
+    Add
+</button>
+
+<button (click)="updatePlaylist()" *ngIf="plst.PlaylistId!=0" class="btn btn-primary">
+    Update
+</button>

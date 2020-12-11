@@ -20,7 +20,6 @@ namespace CamDoorBellApp.Models
         public int CountOfSamp { get; set; }
         [Display(Name = "Розмір плейлиста")]
         public int PlaylistSize { get; set; }
-        public int SampleId { get; set; }
         public ICollection<Sample> samples { get; set; }
 
     }
@@ -37,7 +36,7 @@ namespace CamDoorBellApp.Models
         [Display(Name = "Розмір аудіофайлу")]
         public int SampleSize { get; set; }
         public string SampleLink { get; set; }
-        public int PlaylistId { get; set; }
+        public string PlaylistName { get; set; }
         public virtual Playlist Playlist { get; set; }
     }
 

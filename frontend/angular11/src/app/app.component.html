@@ -7,7 +7,7 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <button routerLink="playlist"
-        class="m-1 btn btn-light btn-outline-primary" Button>Playlist</button>
+        class="m-1 btn btn-light btn-outline-primary" Button>{{'button.Playlist'| translate}}</button>
       </li>
       <li class="nav-item">
         <button routerLink="sample"
@@ -16,6 +16,19 @@
       <li class="nav-item">
         <button routerLink="wirelesscon"
         class="m-1 btn btn-light btn-outline-primary" Button>Wi-Fi</button>
+      </li>
+      <li class="nav-item">
+        <button routerLink="camera"
+        class="m-1 btn btn-light btn-outline-primary" Button>Stream</button>
+      </li>
+
+      <li class="nav-item">
+        <button (click)="uselanguage('en')" 
+        class="m-1 btn btn-light btn-outline-primary" Button>en</button>
+      </li>
+      <li class="nav-item">
+        <button (click)="uselanguage('ua')" 
+        class="m-1 btn btn-light btn-outline-primary" Button>ua</button>
       </li>
     </ul>
   </nav>

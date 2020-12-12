@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedService} from 'src/app/shared.service';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-show-plst',
@@ -62,7 +62,6 @@ export class ShowPlstComponent implements OnInit {
 
   refreshPlaylist()
   {
-    this.service.getPlaylist();
     this.service.getPlaylist().subscribe(data=>{
       this.PlaylistList=data;
       this.PlaylistListWithoutFilter=data;

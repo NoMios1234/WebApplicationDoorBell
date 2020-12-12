@@ -1,0 +1,32 @@
+
+<div >
+    <button type="button" class="btn btn-primary float-left m-2" 
+        data-toggle="modal" data-target="#exampleModal"
+        (click)="startStream()"
+        data-backdrop="static" data-keyboard="false">
+        Start stream
+    </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <img class="embed-responsive embed-responsive-16by9" src="http://192.168.1.106/" width="800px;" height="600px;">
+            </div>
+            <div class="float-center">
+                <button type="button" class="close" 
+                data-dismiss="modal" aria-label="Close"
+                (click)="closeClick()" >
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            
+          </div>
+          
+        </div>
+       
+      </div>  
+  </div>
+
+

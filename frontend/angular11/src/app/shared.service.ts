@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 export class SharedService {
 readonly APIUrl="https://localhost:44371/api";
 readonly FileUrl="https://localhost:44371/Files/";
+readonly StreamUrl="http://192.168.1.106/";
 
   constructor(private http:HttpClient) { }
 
@@ -70,5 +71,9 @@ readonly FileUrl="https://localhost:44371/Files/";
   getAllPlaylistNames():Observable<any[]>
   {
     return this.http.get<any[]>(this.APIUrl+'/Sample/getAllPlaylistNames');
+  }
+  getSream():Observable<any[]>
+  {
+    return this.http.get<any[]>(this.StreamUrl);
   }
 }

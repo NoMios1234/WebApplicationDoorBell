@@ -40,6 +40,21 @@ readonly FileUrl="https://localhost:44371/Files/";
   {
     return this.http.delete(this.APIUrl+'/Sample/'+val);
   }
+  getWirelessConn():Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/WirelessConn');
+  }
+  addWirelessConn(val:any)
+  {
+    return this.http.post(this.APIUrl+'/WirelessConn', val);
+  }
+  updateWirelessConn(val:any)
+  {
+    return this.http.put(this.APIUrl+'/WirelessConn', val);
+  }
+  deleteWirelessConn(val:any)
+  {
+    return this.http.delete(this.APIUrl+'/WirelessConn/'+val);
+  }
   uploadFile(val:any)
   {
     return this.http.post(this.APIUrl+'/Sample/UploadFile',val);

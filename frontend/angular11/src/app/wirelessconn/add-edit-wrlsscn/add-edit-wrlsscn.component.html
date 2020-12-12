@@ -1,1 +1,33 @@
-<p>add-edit-wrlsscn works!</p>
+<div class="form-froup row">
+
+    <label class="col-sm-2 col-form-label">SSID</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="WirelessConnSSID"
+        placeholder="Enter SSID">
+    </div>
+    <label class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="WirelessConnPassword"
+        placeholder="Enter Password">
+    </div>
+    <label class="col-sm-2 col-form-label">Mode</label>
+    <div class="col-sm-10">
+        <select class="form-control" [(ngModel)]="WirelessConnMode">
+            <option>AP</option>
+            <option>STA</option>
+        </select>
+    </div> 
+    <label class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="WirelessConnDesc"
+        placeholder="Enter Description">
+    </div> 
+</div>
+
+<button (click)="addWirelessConn()" *ngIf="wirl.WirelessConnId==0" class="btn btn-primary" >
+    Add
+</button>
+
+<button (click)="updateWirelessConn()" *ngIf="wirl.WirelessConnId!=0" class="btn btn-primary">
+    Update
+</button>

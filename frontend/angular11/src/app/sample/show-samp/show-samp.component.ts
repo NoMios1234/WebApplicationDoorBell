@@ -16,6 +16,10 @@ export class ShowSampComponent implements OnInit {
   ActivateAddEditSampComp:boolean=false;
   samp:any;
 
+  SampleIdFilter:string="";
+  SampleNameFilter:string="";
+  SampleWithoutFilter:any=[];
+
   ngOnInit(): void {
     this.refreshSampleList();
   }
@@ -45,10 +49,8 @@ export class ShowSampComponent implements OnInit {
   {
     if(confirm('Are you shure?'))
     {
-      this.service.deleteSample(item.SampleId).subscribe(data=>{
-        alert(data.toString());
-        this.refreshSampleList();
-      })
+      this.service.deleteSample(item.SampleId).subscribe();
+      this.refreshSampleList();
       this.service.updatePlaylistInfo(item).subscribe();
     }
   }
@@ -62,7 +64,34 @@ export class ShowSampComponent implements OnInit {
   refreshSampleList()
   {
     this.service.getSampList().subscribe(data=>{
-      this.SampleList=data;     
+      this.SampleList=data;   
+      this.SampleWithoutFilter=data;  
     });
+    
+  }
+
+  FilterFn()
+  {
+    var PlaylistIdFilter = this.SampleIdFilter;
+    var PlaylistNameFilter = this.SampleNameFilter;
+
+    this.SampleList = this.SampleWithoutFilter.filter(function (el){
+      return el.SampleId.toString().toLowerCase().includes(
+        PlaylistIdFilter.toString().trim().toLowerCase()
+      )&&
+      el.SampleName.toString().toLowerCase().includes(
+        PlaylistNameFilter.toString().trim().toLowerCase()
+      )
+    });
+  }
+
+  sortResult(prop,asc){
+    this.SampleList = this.SampleWithoutFilter.sort(function(a,b){
+      if(asc){
+          return (a[prop]>b[prop])?1 : ((a[prop]<b[prop]) ?-1 :0);
+      }else{
+        return (b[prop]>a[prop])?1 : ((b[prop]<a[prop]) ?-1 :0);
+      }
+    })
   }
 }

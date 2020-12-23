@@ -1,5 +1,8 @@
 {
     "button":{
-        "Playlist":"Плейлист"
+        "Playlist":"Плейлист",
+        "Sample":"Аудіозапис",
+        "Wi-Fi":"Wi-Fi",
+        "Stream":"Стрім"
     }
 }

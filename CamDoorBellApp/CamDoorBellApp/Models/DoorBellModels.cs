@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace CamDoorBellApp.Models
 {
     public class Playlist
     {
-        public Playlist() // аудіотека
+        public Playlist() 
         {
             samples = new HashSet<Sample>();
         }
@@ -24,23 +20,23 @@ namespace CamDoorBellApp.Models
 
     }
 
-    public class Sample // аудіофайл
+    public class Sample
     {
         public int SampleId { get; set; }
 
         [Display(Name = "Назва аудіофйалу")]
-        [Required(ErrorMessage = "Неправильна назва!")]
-        [Remote("CheckName", "SamplesController", HttpMethod = "POST", ErrorMessage = "Файл уже є в аудіотеці!")]
         public string SampleName { get; set; }
 
         [Display(Name = "Розмір аудіофайлу")]
         public int SampleSize { get; set; }
+        [Display(Name = "Посилання на аудіофйал")]
         public string SampleLink { get; set; }
+        [Display(Name = "Плейлист")]
         public string PlaylistName { get; set; }
         public virtual Playlist Playlist { get; set; }
     }
 
-    public class WirelessConn // ssid та pass для Wi-Fi 
+    public class WirelessConn 
     {
         public int WirelessConnId { get; set; }
 
@@ -56,7 +52,9 @@ namespace CamDoorBellApp.Models
     public class Camera
     {
         public int CameraId { get; set; }
+        [Display(Name = "Назва камери")]
         public string CameraName { get; set; }
+        [Display(Name = "IP камери")]
         public string CameraIp { get; set; }
     }
 }

@@ -221,10 +221,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Migrations\202012181208287_main-mig.cs" />
+    <Compile Include="Migrations\202012181208287_main-mig.Designer.cs">
+      <DependentUpon>202012181208287_main-mig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012181226191_norm.cs" />
+    <Compile Include="Migrations\202012181226191_norm.Designer.cs">
+      <DependentUpon>202012181226191_norm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DoorBellModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -318,6 +326,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012181208287_main-mig.resx">
+      <DependentUpon>202012181208287_main-mig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012181226191_norm.resx">
+      <DependentUpon>202012181226191_norm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

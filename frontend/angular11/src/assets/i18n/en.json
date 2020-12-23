@@ -1,5 +1,8 @@
 {
     "button":{
-        "Playlist":"Playlist"
+        "Playlist":"Playlist",
+        "Sample":"Sample",
+        "Wi-Fi":"Wi-Fi",
+        "Stream":"Stream"
     }
 }

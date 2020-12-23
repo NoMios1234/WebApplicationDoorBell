@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using static CamDoorBellApp.Models.UserModels;
 
 namespace CamDoorBellApp.Models
 {
@@ -32,10 +33,9 @@ namespace CamDoorBellApp.Models
         }
 
         public DbSet<Playlist> playlist { get; set; }
-        public DbSet<Sample> samples{ get; set; }
+        public DbSet<Sample> sample { get; set; }
         public DbSet<WirelessConn> wirelessConn { get; set; }
         public DbSet<Camera> camera { get; set; }
-
-
+        public DbSet<User> user { get; set; }
     }
 }

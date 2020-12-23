@@ -282,3 +282,6 @@ C:\Users\Dmitry\source\repos\DoorBellAlarmSystem\CamDoorBellApp\CamDoorBellApp\o
 C:\Users\Dmitry\source\repos\DoorBellAlarmSystem\CamDoorBellApp\CamDoorBellApp\obj\Debug\CamDoorBellApp.csproj.CopyComplete
 C:\Users\Dmitry\source\repos\DoorBellAlarmSystem\CamDoorBellApp\CamDoorBellApp\obj\Debug\CamDoorBellApp.dll
 C:\Users\Dmitry\source\repos\DoorBellAlarmSystem\CamDoorBellApp\CamDoorBellApp\obj\Debug\CamDoorBellApp.pdb
+C:\Users\Dmitry\source\repos\DoorBellAlarmSystem\CamDoorBellApp\CamDoorBellApp\obj\Debug\CamDoorBellApp.Migrations.mainmig.resources
+C:\Users\Dmitry\source\repos\DoorBellAlarmSystem\CamDoorBellApp\CamDoorBellApp\obj\Debug\CamDoorBellApp.csproj.GenerateResource.cache
+C:\Users\Dmitry\source\repos\DoorBellAlarmSystem\CamDoorBellApp\CamDoorBellApp\obj\Debug\CamDoorBellApp.Migrations.norm.resources

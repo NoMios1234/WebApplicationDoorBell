@@ -38,9 +38,7 @@ namespace CamDoorBellApp.Controllers
                     ('" + playlist.PlaylistName + @"',
                      '" + playlist.CountOfSamp + @"',
                      '" + playlist.PlaylistSize + @"'
-                    )
-                    ";
-
+                    )";
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
@@ -50,11 +48,11 @@ namespace CamDoorBellApp.Controllers
                     cmd.CommandType = CommandType.Text;
                     da.Fill(table);
                 }
-                return "Added Successfully!!";
+                return "Added Successfully!";
             }
             catch (Exception)
             {
-                return "Failed to Add!!";
+                return "Failed to Add!";
             }
         }
         public string Put(Playlist playlist)
@@ -68,7 +66,6 @@ namespace CamDoorBellApp.Controllers
                     ,PlaylistSize='" + playlist.PlaylistSize + @"'
                     where PlaylistId=" + playlist.PlaylistId + @"
                     ";
-
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
@@ -79,11 +76,11 @@ namespace CamDoorBellApp.Controllers
                     da.Fill(table);
                 }
 
-                return "Updated Successfully!!";
+                return "Updated Successfully!";
             }
             catch (Exception)
             {
-                return "Failed to Update!!";
+                return "Failed to Update!";
             }
         }
 
@@ -95,7 +92,6 @@ namespace CamDoorBellApp.Controllers
                     delete from dbo.Playlists 
                     where PlaylistId=" + id + @"
                     ";
-
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
@@ -106,12 +102,11 @@ namespace CamDoorBellApp.Controllers
                     da.Fill(table);
                 }
 
-                return "Deleted Successfully!!";
+                return "Deleted Successfully!";
             }
             catch (Exception)
             {
-
-                return "Failed to Delete!!";
+                return "Failed to Delete!";
             }
         }
 
@@ -135,30 +130,5 @@ namespace CamDoorBellApp.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, table);
         }
-        /// <summary>
-        /// /////////////////////////////
-        /// </summary>
-        /// <returns></returns>
-        [Route("api/Playlist/getId")]
-        [HttpGet]
-        public HttpResponseMessage getId()
-        {
-            string query = @"
-                    select MIN(dbo.Playlists.PlaylistId) from dbo.Playlists";
-
-            DataTable table = new DataTable();
-            using (var con = new SqlConnection(ConfigurationManager.
-                ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
-            using (var cmd = new SqlCommand(query, con))
-            using (var da = new SqlDataAdapter(cmd))
-            {
-                cmd.CommandType = CommandType.Text;
-                da.Fill(table);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK, table);
-        }
-
-
     }
 }

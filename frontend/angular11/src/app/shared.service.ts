@@ -41,6 +41,10 @@ readonly StreamUrl="http://192.168.1.106/";
   {
     return this.http.delete(this.APIUrl+'/Sample/'+val);
   }
+  removeSampleLink(val:any)
+  {
+    return this.http.put(this.APIUrl+'/Sample/RemoveSample', val);
+  }
   getWirelessConn():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/WirelessConn');
   }

@@ -37,7 +37,7 @@ namespace CamDoorBellApp
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AuthorizeEndpointPath = new PathString("/api/Account/Register"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 // В рабочем режиме задайте AllowInsecureHttp = false
                 AllowInsecureHttp = true

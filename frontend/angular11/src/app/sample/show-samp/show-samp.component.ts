@@ -49,9 +49,11 @@ export class ShowSampComponent implements OnInit {
   {
     if(confirm('Are you shure?'))
     {
-      this.service.deleteSample(item.SampleId).subscribe();
-      this.refreshSampleList();
-      this.service.updatePlaylistInfo(item).subscribe();
+      this.service.removeSampleLink(item).subscribe();
+      this.service.deleteSample(item.SampleId).subscribe(data=>{
+        this.refreshSampleList();
+      })
+      this.service.updatePlaylistInfo(item).subscribe(); 
     }
   }
 
@@ -67,7 +69,6 @@ export class ShowSampComponent implements OnInit {
       this.SampleList=data;   
       this.SampleWithoutFilter=data;  
     });
-    
   }
 
   FilterFn()

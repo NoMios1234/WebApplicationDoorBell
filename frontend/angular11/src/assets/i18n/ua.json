@@ -3,6 +3,29 @@
         "Playlist":"Плейлист",
         "Sample":"Аудіозапис",
         "Wi-Fi":"Wi-Fi",
-        "Stream":"Стрім"
+        "Stream":"Камера"
+    },
+    "nametag":{
+        "Playlist":"Плейлист",
+        "Sample":"Аудіозапис",
+        "Start stream":"Почати перегляд",
+        "Language":"Мова",
+        "Log out":"Вихід",
+        "Name":"Назва",
+        "Count":"Кількість",
+        "Size":"Розмір",
+        "Actions":"Дії",
+        "Playing":"Відтворення",
+        "Play":"Відтворити",
+        "Playlist Name":"Плейлист",
+        "Password":"Пароль",
+        "Mode":"Режим",
+        "Decription":"Опис",
+        "Filter":"Фільтер",
+        "+ Wi-Fi":"+ Wi-Fi",
+        "+ Sample":"+ Аудіофайл",
+        "+ Playlist": "+ Плейлист"
+        
     }
+
 }

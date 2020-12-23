@@ -1,10 +1,14 @@
 <!-- Button trigger modal -->
-<div >
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <h4 class="d-flex justify-content-center">{{'nametag.Playlist'| translate}}</h4>
+</nav>
+
+<div>
   <button type="button" class="btn btn-primary float-left m-2" 
     data-toggle="modal" data-target="#exampleModal"
     (click)="addClick()"
     data-backdrop="static" data-keyboard="false">
-    + Playlist
+    {{'nametag.+ Playlist'| translate}}
   </button>
     
     <!-- Modal -->
@@ -25,39 +29,17 @@
           </div>
         </div>
       </div>
-    </div>  
+    </div> 
+   
 </div>
-
-
 <table class="table table-striped">
     <thead>
         <tr>
             <th>
               <div >
-                <div class="d-flex flex-row" >
-                  <input [(ngModel)]="PlaylistIdFilter" class="form-control"
-                  (keyup)="FilterFn()" placeholder="Filter">
-  
-                  <button type="button" class="btn btn-light"
-                  (click)="sortResult('PlaylistId',true)">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"/>
-                  </svg>
-                  </button>
-                  <button type="button" class="btn btn-light"
-                    (click)="sortResult('PlaylistId',false)">
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>    
-              Id</th>
-            <th>
-              <div >
                 <div class="d-flex flex-row">
                   <input [(ngModel)]="PlaylistNameFilter" class="form-control"
-                  (keyup)="FilterFn()" placeholder="Filter">
+                  (keyup)="FilterFn()" placeholder="{{'nametag.Filter'| translate}}">
   
                   <button type="button" class="btn btn-light"
                   (click)="sortResult('PlaylistName',true)">
@@ -73,15 +55,15 @@
                   </button>
                 </div>
               </div>
-              Name</th>
-            <th>Count</th>
-            <th>Size</th>
+                {{'nametag.Name'| translate}}</th>
+            <th>{{'nametag.Count'| translate}}</th>
+            <th>{{'nametag.Size'| translate}}</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let dataItem of PlaylistList">
-            <td>{{dataItem.PlaylistId}}</td>
+
             <td>{{dataItem.PlaylistName}}</td>
             <td>{{dataItem.CountOfSamp}}</td>
             <td>{{dataItem.PlaylistSize}}</td>

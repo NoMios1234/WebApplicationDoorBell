@@ -4,5 +4,27 @@
         "Sample":"Sample",
         "Wi-Fi":"Wi-Fi",
         "Stream":"Stream"
+    },
+    "nametag":{
+        "Playlist":"Playlist",
+        "Sample":"Sample",
+        "Start stream":"Start stream",
+        "Language":"Language",
+        "Log out":"Log out",
+        "Name":"Name",
+        "Count":"Count",
+        "Size":"Size",
+        "Actions":"Actions",
+        "Playing":"Playing",
+        "Play":"Play",
+        "Playlist Name":"Playlist",
+        "Password":"Password",
+        "Mode":"Mode",
+        "Decription":"Decription",
+        "Filter":"Filter",
+        "+ Wi-Fi":"+ Wi-Fi",
+        "+ Sample":"+ Sample",
+        "+ Playlist": "+ Playlist"
+        
     }
 }

@@ -1,36 +1,47 @@
 <div class="container">
 
-  <h3 class="d-flex justify-content-center">CamVideoDoorBell System</h3>
-  <h5 class="d-flex justify-content-center">Managment Menu</h5>
-
-  <nav class="navbar navbar-expand-sm bg-light navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <button routerLink="playlist"
-        class="m-1 btn btn-light btn-outline-primary" Button>{{'button.Playlist'| translate}}</button>
-      </li>
-      <li class="nav-item">
-        <button routerLink="sample"
-        class="m-1 btn btn-light btn-outline-primary" Button>{{'button.Sample'| translate}}</button>
-      </li>
-      <li class="nav-item">
-        <button routerLink="wirelesscon"
-        class="m-1 btn btn-light btn-outline-primary" Button>{{'button.Wi-Fi'| translate}}</button>
-      </li>
-      <li class="nav-item">
-        <button routerLink="camera"
-        class="m-1 btn btn-light btn-outline-primary" Button>{{'button.Stream'| translate}}</button>
-      </li>
-
-      <li class="nav-item">
-        <button (click)="uselanguage('en')" 
-        class="m-1 btn btn-light btn-outline-primary" Button>en</button>
-      </li>
-      <li class="nav-item">
-        <button (click)="uselanguage('ua')" 
-        class="m-1 btn btn-light btn-outline-primary" Button>ua</button>
-      </li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color: #e3f2fd;">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <button routerLink="playlist"
+          class="m-1 btn btn-light " Button>{{'button.Playlist'| translate}}</button>
+        </li>
+        <li class="nav-item">
+          <button routerLink="sample"
+          class="m-1 btn btn-light " Button>{{'button.Sample'| translate}}</button>
+        </li>
+        <li class="nav-item">
+          <button routerLink="wirelesscon"
+          class="m-1 btn btn-light " Button>{{'button.Wi-Fi'| translate}}</button>
+        </li>
+        <li class="nav-item">
+          <button routerLink="camera"
+          class="m-1 btn btn-light " Button>{{'button.Stream'| translate}}</button>
+        </li>
+      </ul>
+      <h3 style="margin-right: 10px;">Alarm System</h3>
+      
+      <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto">
+          <button type="button" class="btn btn-link">{{'nametag.Log out'| translate}}</button>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{'nametag.Language'| translate}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#"><button (click)="uselanguage('en')" class="btn btn-light btn btn-primary" Button>en</button></a>
+              <a class="dropdown-item" href="#"><button (click)="uselanguage('ua')" class="btn btn-light btn btn-primary" Button>ua</button></a>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
   </nav>
   <router-outlet></router-outlet>
 

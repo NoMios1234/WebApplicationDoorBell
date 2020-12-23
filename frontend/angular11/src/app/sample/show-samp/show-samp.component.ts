@@ -42,7 +42,6 @@ export class ShowSampComponent implements OnInit {
     this.samp=item;
     this.ModalTitle="Edit Sample";
     this.ActivateAddEditSampComp=true;
-    this.service.updatePlaylistInfo(item).subscribe();
   }
 
   deleteClick(item)
@@ -50,10 +49,10 @@ export class ShowSampComponent implements OnInit {
     if(confirm('Are you shure?'))
     {
       this.service.removeSampleLink(item).subscribe();
+      this.service.updatePlaylistInfoOnDelete(item).subscribe();
       this.service.deleteSample(item.SampleId).subscribe(data=>{
         this.refreshSampleList();
-      })
-      this.service.updatePlaylistInfo(item).subscribe(); 
+      }) 
     }
   }
 

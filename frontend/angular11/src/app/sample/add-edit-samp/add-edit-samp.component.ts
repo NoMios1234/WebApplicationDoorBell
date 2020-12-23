@@ -83,7 +83,7 @@ export class AddEditSampComponent implements OnInit {
       SampleSize:this.SampleSize,
       SampleLink:this.SampleLink,
       PlaylistName:this.PlaylistName};
-      this.service.updatePlaylistInfo(val).subscribe();
+      this.service.updatePlaylistInfoOnAdd(val).subscribe();
   }
   
 }

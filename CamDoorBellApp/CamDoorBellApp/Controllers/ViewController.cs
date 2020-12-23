@@ -11,28 +11,59 @@ namespace CamDoorBellApp.Controllers
 {
     public class ViewController : ApiController
     {
-        [Route("api/View/updatePlaylistInfo")]
+        [Route("api/View/updatePlaylistInfoOnAdd")]
         [HttpPut]
-        public HttpResponseMessage updatePlaylistInfo(Sample sample)
+        public string updatePlaylistInfoOnAdd(Sample sample)
         {
-            string query = @"
+            if(sample!=null)
+            {
+                string query = @"
                     UPDATE 
                         dbo.Playlists
                     SET 
-                        dbo.Playlists.CountOfSamp = (Select Count(dbo.Samples.SampleId) from dbo.Samples where dbo.Samples.PlaylistName = '" + sample.PlaylistName + @"'),
-                        dbo.Playlists.PlaylistSize = (Select Sum(dbo.Samples.SampleSize) from dbo.Samples where dbo.Samples.PlaylistName = '" + sample.PlaylistName + @"')
+                        dbo.Playlists.CountOfSamp = dbo.Playlists.CountOfSamp + 1,
+                        dbo.Playlists.PlaylistSize = dbo.Playlists.PlaylistSize + '" + sample.SampleSize + @"'
                     Where dbo.Playlists.PlaylistName = '" + sample.PlaylistName + @"'
                     ";
-            DataTable table = new DataTable();
-            using (var con = new SqlConnection(ConfigurationManager.
-                ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
-            using (var cmd = new SqlCommand(query, con))
-            using (var da = new SqlDataAdapter(cmd))
-            {
-                cmd.CommandType = CommandType.Text;
-                da.Fill(table);
+                DataTable table = new DataTable();
+                using (var con = new SqlConnection(ConfigurationManager.
+                    ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
+                using (var cmd = new SqlCommand(query, con))
+                using (var da = new SqlDataAdapter(cmd))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    da.Fill(table);
+                }
+                return "Playlist was updated!";
             }
-            return Request.CreateResponse(HttpStatusCode.OK, table);
+            return "Playlist was not updated!";
+        }
+        [Route("api/View/updatePlaylistInfoOnDelete")]
+        [HttpPut]
+        public string updatePlaylistInfoOnDelete(Sample sample)
+        {
+            if (sample != null)
+            {
+                string query = @"
+                    UPDATE 
+                        dbo.Playlists
+                    SET 
+                        dbo.Playlists.CountOfSamp = dbo.Playlists.CountOfSamp - 1,
+                        dbo.Playlists.PlaylistSize = dbo.Playlists.PlaylistSize - '" + sample.SampleSize + @"' 
+                    Where dbo.Playlists.PlaylistName = '" + sample.PlaylistName + @"'
+                    ";
+                DataTable table = new DataTable();
+                using (var con = new SqlConnection(ConfigurationManager.
+                    ConnectionStrings["DoorBellAlarmSystemDB"].ConnectionString))
+                using (var cmd = new SqlCommand(query, con))
+                using (var da = new SqlDataAdapter(cmd))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    da.Fill(table);
+                }
+                return "Playlist was updated!";
+            }
+            return "Playlist was not updated!";
         }
 
         [Route("api/View/GetWirelessConnInfo")]

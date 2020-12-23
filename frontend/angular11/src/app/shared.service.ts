@@ -68,9 +68,13 @@ readonly StreamUrl="http://192.168.1.106/";
   {
     return this.http.get<any[]>(this.APIUrl+'/Playlist/getAllSamples');
   }
-  updatePlaylistInfo(val:any)
+  updatePlaylistInfoOnAdd(val:any)
   {
-    return this.http.put(this.APIUrl+'/View/updatePlaylistInfo', val);
+    return this.http.put(this.APIUrl+'/View/updatePlaylistInfoOnAdd', val);
+  }
+  updatePlaylistInfoOnDelete(val:any)
+  {
+    return this.http.put(this.APIUrl+'/View/updatePlaylistInfoOnDelete', val);
   }
   getAllPlaylistNames():Observable<any[]>
   {

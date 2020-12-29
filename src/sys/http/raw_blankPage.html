@@ -1,0 +1,199 @@
+</html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#007bff">
+  <title>Jee UI Framework</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="js/bubbly_bg.js"></script>
+</head>
+<body onload="onload(); ">
+  <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-1967157221324951",
+      enable_page_level_ads: true
+    });
+  </script>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">
+      <img src="images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      JeeUI
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse show" id="menu">
+    </div>
+  </nav>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page" id="breadcrumb">Главная</li>
+    </ol>
+  </nav>
+  <div class="container">
+    <form action="" method="post" id="formMain" name="formMain">
+      <div id="blank">
+      </div>
+    </form>
+  </div>
+  <hr>
+
+  <script src="js/bootstrap.min.js"></script>
+  <canvas id="1" width="1" height="1"></canvas>
+  <script>bubbly({
+      colorStart: "#007bff",
+      colorStop: "#ffffff",
+      blur: 1,
+      compose: "source-over",
+      velocityFunc: () => 0.9 + Math.random() * 0.5,
+    });
+  </script>
+  <script>
+    function onload() {
+      let currentPage = localStorage.getItem('page');
+      if(currentPage==null)
+        currentPage = 0;
+      page_update(currentPage);
+      menu_update(currentPage);
+      title_update(currentPage);
+      alert( currentPage ); 
+    };
+    function update(page) {
+      localStorage.setItem('page', page);
+      page_update(page);
+      menu_update(page);
+      title_update(page);
+    };
+    function page_update(page) {
+      localStorage.setItem('page', page);
+      var x = new XMLHttpRequest();
+      x.open("GET", "/echo?p=" + page, true);
+      x.onload = function () {
+        get("#blank").innerHTML = x.responseText;
+      }
+      x.send(null);
+    };
+    function menu_update(page) {
+      localStorage.setItem('page', page);
+      var x = new XMLHttpRequest();
+      x.open("GET", "/menu?p=" + page, true);
+      x.onload = function () {
+        get("#menu").innerHTML = x.responseText;
+      }
+      x.send(null);
+    };
+    function title_update(page) {
+      localStorage.setItem('page', page);
+      var x = new XMLHttpRequest();
+      x.open("GET", "/title?p=" + page, true);
+      x.onload = function () {
+        get("#breadcrumb").innerHTML = x.responseText;
+      }
+      x.send(null);
+     };
+    function reboot() {
+      localStorage.setItem('page', 0);
+      document.getElementById("messegeResult").innerHTML = "<div class=\"alert alert-danger\" role=\"alert\">Внимание! Устройство перезагружается, пожалуйста подожите 10 секунд!</div>";
+      var x = new XMLHttpRequest();
+      x.open("GET", "/reboot", true);
+      x.send(null);
+      setTimeout(clear, 10000);
+    };
+    function clear() {
+      document.getElementById("messegeResult").innerHTML = "";
+      update(0)
+    };
+    function get(selector) {
+      if (typeof selector == 'object') { return selector; }
+      else { return document.querySelector(selector); }
+    };
+    function selssid(value) { 
+      document.getElementById("ssid").value = value;
+    };
+    function updateTextInput(id, val) {
+      get('#' + id).innerHTML = val;
+    };
+	
+	  function sendForm(formMain, url) {
+      var http = new XMLHttpRequest();
+      http.open("POST", url, true);
+      var formData = new FormData(document.forms.formMain);
+      http.send(formData);
+      http.onload = function() {
+        var response = http.responseText;
+        document.getElementById("messegeResult").innerHTML = "<div class=\"alert alert-success\" role=\"alert\">" + response + "</div>";
+      }
+      setTimeout(clear, 2000);
+      function clear() {
+        document.getElementById("messegeResult").innerHTML = "";
+      };
+    };
+    function customUpdate() {
+        localStorage.setItem('page', 3);
+        location.reload(); // перезагружаем страницу
+    };
+    function sendCustom(url) {
+      var http = new XMLHttpRequest();
+      http.open("GET", url, true);
+      http.send();
+      http.onload = function() {
+      var response = http.responseText;
+        document.getElementById("messegeResult").innerHTML = "<div class=\"alert alert-success\" role=\"alert\">" + response + "</div>";
+      }
+      setTimeout(clear, 2000);
+      function clear() {
+        document.getElementById("messegeResult").innerHTML = "";
+      };
+      setTimeout(customUpdate, 5000);
+    };
+  
+	
+  </script>
+  <script>
+  let collapseElements = document.querySelectorAll('[data-toggle="collapse"]');
+const CLASS_SHOW = 'show';
+const CLASS_COLLAPSE = 'collapse';
+const CLASS_COLLAPSING = 'collapsing';
+const CLASS_COLLAPSED = 'collapsed';
+const ANIMATION_TIME = 350; // 0.35s
+
+function handleCollapseElementClick(e) {
+    let el = e.currentTarget;
+    let collapseTargetId = el.dataset.target || el.href || null;
+    if (collapseTargetId) {
+        let targetEl = document.querySelector(collapseTargetId);
+        let isShown = targetEl.classList.contains(CLASS_SHOW) || targetEl.classList.contains(CLASS_COLLAPSING);
+        if(!isShown) {
+            targetEl.classList.remove(CLASS_COLLAPSE);
+            targetEl.classList.add(CLASS_COLLAPSING);
+            targetEl.style.height = 0
+            targetEl.classList.remove(CLASS_COLLAPSED);
+            setTimeout(() => {
+                targetEl.classList.remove(CLASS_COLLAPSING);
+                targetEl.classList.add(CLASS_COLLAPSE, CLASS_SHOW);
+                targetEl.style.height = '';
+            }, ANIMATION_TIME)
+            targetEl.style.height = targetEl.scrollHeight + 'px';
+        } else {
+            targetEl.style.height = `${targetEl.getBoundingClientRect().height}px`
+            targetEl.offsetHeight;
+            targetEl.classList.add(CLASS_COLLAPSING);
+            targetEl.classList.remove(CLASS_COLLAPSE, CLASS_SHOW);
+            targetEl.style.height = '';
+            setTimeout(() => {
+                targetEl.classList.remove(CLASS_COLLAPSING);
+                targetEl.classList.add(CLASS_COLLAPSE);
+            }, ANIMATION_TIME)
+        }
+    }
+}
+collapseElements.forEach((el) => {
+    el.addEventListener('click', handleCollapseElementClick)
+})
+</script>
+</body>
+</html>

@@ -38,6 +38,8 @@ export class ShowPlstComponent implements OnInit {
 
   editClick(item)
   {
+    alert(item);
+    console.log(item);
     this.plst=item;
     this.ModalTitle="Edit Playlist";
     this.ActivateAddEditPlstComp=true;

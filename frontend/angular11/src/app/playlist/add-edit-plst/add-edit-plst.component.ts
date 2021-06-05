@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {SharedService} from 'src/app/shared.service';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-add-edit-plst',
@@ -19,10 +19,9 @@ export class AddEditPlstComponent implements OnInit {
   ngOnInit(): void {
     
     this.PlaylistId=this.plst.Id;
-      this.PlaylistName=this.plst.Name;
-      this.CountOfSamp=this.plst.Count;
-      this.PlaylistSize=this.plst.Size;
-
+    this.PlaylistName=this.plst.Name;
+    this.CountOfSamp=this.plst.Count;
+    this.PlaylistSize=this.plst.Size;
   }
 
   addPlaylist()
@@ -43,8 +42,8 @@ export class AddEditPlstComponent implements OnInit {
               CountOfSamp:this.CountOfSamp,
               PlaylistSize:this.PlaylistSize
               };
-      this.service.updatePlaylist(val).subscribe(res=>{
-        alert(res.toString());
-      })
+    this.service.updatePlaylist(val).subscribe(res=>{
+      alert(res.toString());
+    })
   }
 }

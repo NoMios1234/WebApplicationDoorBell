@@ -36,6 +36,7 @@ namespace CamDoorBellApp.Models
         public virtual Playlist Playlist { get; set; }
     }
 
+
     public class WirelessConn 
     {
         public int WirelessConnId { get; set; }
@@ -56,5 +57,13 @@ namespace CamDoorBellApp.Models
         public string CameraName { get; set; }
         [Display(Name = "IP камери")]
         public string CameraIp { get; set; }
+    }
+    public class Capture
+    {
+        public int CaptureId { get; set; }
+        public string CaptureName { get; set; }
+        public string CapturePath { get; set; }
+        public int CaptureSize { get; set; }
+
     }
 }
